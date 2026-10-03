@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">هشام حسين علي متولي | محلل بيانات مالية وتشغيلية | يبني أنظمة ذكاء اصطناعي و No-Code تدير العمليات</title>
+<meta id="pageDesc" name="description" content="هشام حسين علي متولي — محلل بيانات مالية وتشغيلية بخبرة دولية تفوق 25 عامًا في مصر وليبيا والإمارات، ومصمم أنظمة أعمال بدون برمجة مدعومة بالذكاء الاصطناعي.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12161C;
+    --surface:#1A2029;
+    --surface-2:#222A35;
+    --accent:#E2892A;
+    --accent-2:#5AA9C9;
+    --ink:#EDF0F2;
+    --ink-muted:#8892A0;
+    --line:#2B3540;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'IBM Plex Sans Arabic', 'IBM Plex Sans', sans-serif; line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  html[dir="ltr"] body{ font-family:'IBM Plex Sans', 'IBM Plex Sans Arabic', sans-serif; }
+  html[dir="ltr"] .hero h1, html[dir="ltr"] .profile-card h3, html[dir="ltr"] h2.section-title,
+  html[dir="ltr"] .expertise-card h4, html[dir="ltr"] .feature-card h4, html[dir="ltr"] .tl-item h4,
+  html[dir="ltr"] .mini-card h4, html[dir="ltr"] .brand, html[dir="ltr"] .project-head h3{ font-family:'Tajawal','IBM Plex Sans',sans-serif; }
+  a{color:var(--accent-2);}
+  ::selection{background:var(--accent); color:#12161C;}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+  .grid-bg{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:42px 42px; opacity:0.18;
+  }
+
+  .topbar{
+    position:fixed; top:0; inset-inline:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; background:rgba(18,22,28,0.85);
+    backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+    gap:16px;
+  }
+  .topbar .brand{ font-family:'Tajawal', sans-serif; font-weight:700; font-size:1.05rem; white-space:nowrap; }
+  .topbar .brand span{color:var(--accent);}
+  .topbar .topbar-right{ display:flex; align-items:center; gap:20px; }
+  .topbar nav{display:none; gap:22px;}
+  .topbar nav a{ color:var(--ink-muted); text-decoration:none; font-size:0.92rem; font-weight:500; transition:color 0.2s; }
+  .topbar nav a:hover{color:var(--ink);}
+  @media (min-width:760px){ .topbar nav{display:flex;} }
+
+  .lang-switch{ display:flex; align-items:center; gap:2px; border:1px solid var(--line); border-radius:100px; padding:3px; background:var(--surface); }
+  .lang-btn{ font-family:'IBM Plex Mono', monospace; font-size:0.72rem; font-weight:500; color:var(--ink-muted); background:transparent; border:none; border-radius:100px; padding:6px 11px; cursor:pointer; transition:background 0.2s, color 0.2s; }
+  .lang-btn:hover{ color:var(--ink); }
+  .lang-btn.active{ background:var(--accent); color:#181103; }
+
+  .rail{ position:fixed; top:50%; transform:translateY(-50%); left:22px; z-index:40; display:none; flex-direction:column; align-items:center; }
+  html[dir="rtl"] .rail{ left:22px; right:auto; }
+  html[dir="ltr"] .rail{ left:22px; right:auto; }
+  @media (min-width:960px){ .rail{display:flex;} }
+  .rail-track{ position:relative; width:2px; height:320px; background:var(--line); border-radius:2px; }
+  .rail-fill{ position:absolute; top:0; right:0; left:0; width:100%; height:0%; background:linear-gradient(var(--accent), var(--accent-2)); border-radius:2px; transition:height 0.15s ease-out; }
+  .rail-stage{ position:absolute; right:-5px; width:12px; height:12px; border-radius:50%; background:var(--surface-2); border:2px solid var(--line); transition:background 0.3s, border-color 0.3s; }
+  .rail-stage.done{ background:var(--accent); border-color:var(--accent); }
+  .rail-label{ position:absolute; right:20px; white-space:nowrap; font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:var(--ink-muted); transform:translateY(-50%); }
+  html[dir="ltr"] .rail-label{ right:auto; left:20px; }
+  .rail-label b{ color:var(--ink); font-weight:500; }
+
+  section{ position:relative; z-index:1; padding:110px 8vw 90px; max-width:1180px; margin:0 auto; }
+  @media (min-width:960px){
+    html[dir="ltr"] section{ padding-left:calc(8vw + 170px); }
+  }
+
+  .hero{ min-height:92vh; display:flex; flex-direction:column; justify-content:center; padding-top:100px; }
+  .hero .tag{
+    display:inline-flex; align-items:center; gap:8px; width:fit-content;
+    font-family:'IBM Plex Mono', monospace; font-size:0.75rem; color:var(--accent);
+    border:1px solid var(--accent); padding:5px 12px; border-radius:100px; margin-bottom:28px;
+  }
+  .hero .tag::before{ content:''; width:6px; height:6px; border-radius:50%; background:var(--accent); }
+  .hero h1{ font-family:'Tajawal', sans-serif; font-weight:900; font-size:clamp(2.2rem, 5.6vw, 4.2rem); line-height:1.1; margin:0 0 18px; }
+  .hero h1 em{ font-style:normal; color:var(--accent); }
+  .hero p.lead{ font-size:1.12rem; color:var(--ink-muted); max-width:650px; margin:0 0 30px; }
+  .hero .cta-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:13px 26px; border-radius:8px; font-weight:600; font-size:0.95rem; text-decoration:none; transition:transform 0.15s, background 0.2s; border:1px solid transparent; }
+  .btn-primary{ background:var(--accent); color:#181103; }
+  .btn-primary:hover{ transform:translateY(-2px); }
+  .btn-ghost{ border-color:var(--line); color:var(--ink); }
+  .btn-ghost:hover{ border-color:var(--accent-2); color:var(--accent-2); }
+
+  .eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--accent-2); letter-spacing:0.06em; display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .eyebrow::before{ content:''; width:26px; height:1px; background:var(--accent-2); }
+  h2.section-title{ font-family:'Tajawal', sans-serif; font-weight:700; font-size:clamp(1.6rem, 3.2vw, 2.4rem); margin:0 0 40px; max-width:680px; }
+
+  .profile-wrap{ display:grid; grid-template-columns:1fr; gap:44px; }
+  @media (min-width:760px){ .profile-wrap{ grid-template-columns:1.2fr 1fr; align-items:start; } }
+  .profile-card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:32px; }
+  .profile-card .ph{ width:84px; height:84px; border-radius:50%; background:var(--surface-2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-family:'Tajawal',sans-serif; font-weight:700; font-size:1.6rem; color:var(--accent); margin-bottom:20px; }
+  .profile-card h3{ font-family:'Tajawal',sans-serif; margin:0 0 4px; font-size:1.3rem; }
+  .profile-card .role{ color:var(--accent-2); font-size:0.95rem; margin-bottom:18px; }
+  .kv-list{ list-style:none; padding:0; margin:22px 0 0; display:flex; flex-direction:column; gap:12px; }
+  .kv-list li{ display:flex; gap:10px; font-size:0.93rem; color:var(--ink-muted); flex-wrap:wrap; }
+  .kv-list b{ color:var(--ink); min-width:80px; font-weight:600; }
+
+  .stat-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  .stat-box{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:22px 20px; }
+  .stat-box .num{ font-family:'IBM Plex Mono',monospace; color:var(--accent); font-size:1.5rem; display:block; margin-bottom:4px; }
+  .stat-box .lbl{ color:var(--ink-muted); font-size:0.83rem; }
+
+  .expertise-grid{ display:grid; grid-template-columns:1fr; gap:16px; }
+  @media (min-width:700px){ .expertise-grid{ grid-template-columns:repeat(2,1fr); } }
+  .expertise-card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:22px 24px; }
+  .expertise-card h4{ font-family:'Tajawal',sans-serif; margin:0 0 8px; font-size:1rem; color:var(--accent-2); }
+  .expertise-card p{ margin:0; color:var(--ink-muted); font-size:0.9rem; }
+
+  .software-hero{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:40px; margin-bottom:44px; position:relative; overflow:hidden; }
+  .software-hero::after{ content:''; position:absolute; inset:0; background:linear-gradient(120deg, transparent 60%, rgba(226,137,42,0.07)); pointer-events:none; }
+
+  .project-block{ margin-bottom:40px; }
+  .project-block:last-child{ margin-bottom:0; }
+  .project-head{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:18px; }
+  .project-head h3{ font-family:'Tajawal',sans-serif; font-size:1.15rem; margin:0; }
+  .status-chip{ font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--accent); border:1px solid var(--accent); padding:4px 12px; border-radius:100px; white-space:nowrap; }
+  .status-chip.active{ color:var(--accent-2); border-color:var(--accent-2); }
+  .project-p{ color:var(--ink-muted); font-size:0.92rem; max-width:760px; margin:0; }
+
+  .feature-grid{ display:grid; grid-template-columns:1fr; gap:18px; }
+  @media (min-width:700px){ .feature-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (min-width:1020px){ .feature-grid{ grid-template-columns:repeat(3,1fr); } }
+  .feature-card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:24px; transition:border-color 0.2s; }
+  .feature-card:hover{ border-color:var(--accent-2); }
+  .feature-card .fc-code{ font-family:'IBM Plex Mono',monospace; color:var(--accent); font-size:0.78rem; display:block; margin-bottom:12px; }
+  .feature-card h4{ font-family:'Tajawal',sans-serif; margin:0 0 8px; font-size:1.05rem; }
+  .feature-card p{ margin:0; color:var(--ink-muted); font-size:0.9rem; }
+
+  .timeline{ display:flex; flex-direction:column; gap:0; border-right:2px solid var(--line); padding-right:28px; }
+  html[dir="ltr"] .timeline{ border-right:none; border-left:2px solid var(--line); padding-right:0; padding-left:28px; }
+  .tl-item{ position:relative; padding-bottom:34px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{ content:''; position:absolute; right:-33px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--accent-2); border:2px solid var(--bg); box-shadow:0 0 0 2px var(--line); }
+  html[dir="ltr"] .tl-item::before{ right:auto; left:-33px; }
+  .tl-date{ font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--accent); display:block; margin-bottom:6px; }
+  .tl-item h4{ font-family:'Tajawal',sans-serif; margin:0 0 3px; font-size:1.05rem; }
+  .tl-item .tl-company{ color:var(--ink-muted); font-size:0.88rem; margin-bottom:6px; }
+  .tl-item p{ margin:0; color:var(--ink-muted); font-size:0.88rem; max-width:640px; }
+
+  .edu-skills-grid{ display:grid; grid-template-columns:1fr; gap:18px; margin-top:44px; }
+  @media (min-width:760px){ .edu-skills-grid{ grid-template-columns:1fr 1fr; } }
+  .mini-card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:24px; }
+  .mini-card h4{ font-family:'Tajawal',sans-serif; color:var(--accent-2); margin:0 0 12px; font-size:1rem; }
+  .tag-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .skill-tag{ font-size:0.82rem; color:var(--ink-muted); border:1px solid var(--line); padding:5px 11px; border-radius:100px; }
+
+
+  .contact-box{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:44px; display:grid; gap:28px; }
+  @media (min-width:700px){ .contact-box{ grid-template-columns:1fr 1fr; } }
+  .contact-item{ display:flex; flex-direction:column; gap:6px; }
+  .contact-item .lbl{ font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--accent-2); }
+  .contact-item .val{ font-size:1.05rem; }
+  .contact-item .val a{ color:var(--ink); text-decoration:none; }
+  .contact-item .val a:hover{ color:var(--accent-2); }
+
+  footer{ position:relative; z-index:1; text-align:center; padding:36px 8vw 60px; color:var(--ink-muted); font-size:0.85rem; border-top:1px solid var(--line); }
+
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  @media (max-width:759px){
+    .topbar-right{ gap:10px; }
+    .lang-btn{ padding:6px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<div class="topbar">
+  <div class="brand" data-i18n="brand">هشام حسين علي متولي <span>•</span></div>
+  <div class="topbar-right">
+    <nav>
+      <a href="#profile" data-i18n="nav.profile">البروفايل</a>
+      <a href="#expertise" data-i18n="nav.expertise">مجالات الخبرة</a>
+      <a href="#software" data-i18n="nav.software">المشاريع الرئيسية</a>
+      <a href="#experience" data-i18n="nav.experience">المسيرة المهنية</a>
+      <a href="#contact" data-i18n="nav.contact">تواصل</a>
+    </nav>
+    <div class="lang-switch" id="langSwitch" role="group" aria-label="Language selector">
+      <button class="lang-btn" data-lang="ar" type="button">AR</button>
+      <button class="lang-btn" data-lang="en" type="button">EN</button>
+      <button class="lang-btn" data-lang="fr" type="button">FR</button>
+      <button class="lang-btn" data-lang="de" type="button">DE</button>
+      <button class="lang-btn" data-lang="it" type="button">IT</button>
+    </div>
+  </div>
+</div>
+
+<div class="rail" id="rail">
+  <div class="rail-track" id="railTrack">
+    <div class="rail-fill" id="railFill"></div>
+    <div class="rail-stage" style="top:0%"   data-idx="0"><span class="rail-label"><b>STG.01</b> <span data-i18n="rail.profile">البروفايل</span></span></div>
+    <div class="rail-stage" style="top:25%"  data-idx="1"><span class="rail-label"><b>STG.02</b> <span data-i18n="rail.expertise">الخبرة</span></span></div>
+    <div class="rail-stage" style="top:50%"  data-idx="2"><span class="rail-label"><b>STG.03</b> <span data-i18n="rail.software">المشاريع</span></span></div>
+    <div class="rail-stage" style="top:75%"  data-idx="3"><span class="rail-label"><b>STG.04</b> <span data-i18n="rail.experience">المسيرة</span></span></div>
+    <div class="rail-stage" style="top:100%" data-idx="4"><span class="rail-label"><b>STG.05</b> <span data-i18n="rail.contact">تواصل</span></span></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <span class="tag" data-i18n="hero.tag">+25 سنة خبرة دولية — مصر، ليبيا، الإمارات</span>
+  <h1><span data-i18n="hero.name">هشام حسين علي متولي</span><br><em data-i18n="hero.role">محلل بيانات مالية وتشغيلية | يبني أنظمة ذكاء اصطناعي و No-Code تدير العمليات</em></h1>
+  <p class="lead" data-i18n="hero.lead">
+    خبير مالي ومحلل بيانات تشغيلية بخبرة دولية تفوق 25 عامًا في مصر وليبيا والإمارات، متخصص في النمذجة
+    المتقدمة للبيانات باستخدام Excel، ويستخدم Power BI لبناء لوحات متابعة تنفيذية تدعم اتخاذ القرار
+    المبني على البيانات.
+  </p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="#experience" data-i18n="hero.cta1">المسيرة المهنية</a>
+    <a class="btn btn-ghost" href="#contact" data-i18n="hero.cta2">تواصل معايا</a>
+  </div>
+</section>
+
+<!-- PROFILE -->
+<section id="profile">
+  <div class="eyebrow"><span data-i18n="profile.eyebrow">STG.01 — البروفايل</span></div>
+  <h2 class="section-title" data-i18n="profile.title">الملخص المهني</h2>
+  <div class="profile-wrap reveal">
+    <div class="profile-card">
+      <div class="ph" data-i18n="profile.initial">هـ</div>
+      <h3 data-i18n="hero.name">هشام حسين علي متولي</h3>
+      <div class="role" data-i18n="hero.role">محلل بيانات مالية وتشغيلية | يبني أنظمة ذكاء اصطناعي و No-Code تدير العمليات</div>
+      <p data-i18n="profile.bio">
+        خبير مالي ومحلل بيانات تشغيلية بخبرة دولية تفوق 25 عامًا في مصر وليبيا والإمارات. متخصص في
+        النمذجة المتقدمة للبيانات باستخدام Excel والتحليل التشغيلي، مع استخدام Power BI لبناء لوحات
+        متابعة تنفيذية تدعم اتخاذ القرار المبني على البيانات. يجمع بين خبرة مالية ومحاسبية قوية وخبرة
+        عملية في توجيه مشاريع الأتمتة بدون برمجة (No-Code) بمساعدة الذكاء الاصطناعي، بالإضافة إلى دعم
+        البنية التحتية لتقنية المعلومات.
+      </p>
+      <ul class="kv-list">
+        <li><b data-i18n="profile.kv_location_label">الموقع</b> <span data-i18n="profile.kv_location_value">مصر (منفتح على الانتقال الدولي)</span></li>
+        <li><b data-i18n="profile.kv_email_label">البريد</b> <bdi dir="ltr">hesham.hussein.m@gmail.com</bdi></li>
+        <li><b data-i18n="profile.kv_phone_label">الهاتف</b> <bdi dir="ltr">+20 115 120 0917</bdi></li>
+        <li><b data-i18n="profile.kv_linkedin_label">LinkedIn</b> <bdi dir="ltr">linkedin.com/in/hesham-hussein-eg</bdi></li>
+      </ul>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-box"><span class="num">+25</span><span class="lbl" data-i18n="profile.stat1_lbl">سنة خبرة دولية</span></div>
+      <div class="stat-box"><span class="num">3</span><span class="lbl" data-i18n="profile.stat2_lbl">دول: مصر، ليبيا، الإمارات</span></div>
+      <div class="stat-box"><span class="num">2</span><span class="lbl" data-i18n="profile.stat3_lbl">أنظمة بدون برمجة مطوَّرة بمساعدة الذكاء الاصطناعي</span></div>
+      <div class="stat-box"><span class="num">4</span><span class="lbl" data-i18n="profile.stat4_lbl">لغات في الأنظمة المطوَّرة</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="eyebrow"><span data-i18n="expertise.eyebrow">STG.02 — مجالات الخبرة</span></div>
+  <h2 class="section-title" data-i18n="expertise.title">المهارات والكفاءات الأساسية</h2>
+  <div class="expertise-grid reveal">
+    <div class="expertise-card">
+      <h4 data-i18n="expertise.card1_h">تحليل البيانات والتصور المرئي</h4>
+      <p data-i18n="expertise.card1_p">Excel Microsoft المتقدم (نمذجة البيانات، الجداول المحورية، المعادلات المعقدة)، Power BI (لوحات المتابعة والتقارير التنفيذية)، اتخاذ القرار المبني على البيانات.</p>
+    </div>
+    <div class="expertise-card">
+      <h4 data-i18n="expertise.card2_h">التحليل المالي والتشغيلي</h4>
+      <p data-i18n="expertise.card2_p">المحاسبة المالية، مؤشرات الأداء الرئيسية (KPIs)، تحليل التكاليف المتقدم، تكامل البيانات متعددة الأقسام، الموازنة والتنبؤ المالي.</p>
+    </div>
+    <div class="expertise-card">
+      <h4 data-i18n="expertise.card3_h">الذكاء الاصطناعي وأتمتة سير العمل</h4>
+      <p data-i18n="expertise.card3_p">هندسة الأوامر النصية للذكاء الاصطناعي (Prompt Engineering)، إدارة وتوجيه تطوير الأنظمة المدعومة بالذكاء الاصطناعي، والبناء والتطوير العملي لتطبيقات بدون برمجة، تحسين العمليات.</p>
+    </div>
+    <div class="expertise-card">
+      <h4 data-i18n="expertise.card4_h">إدارة الأصول والامتثال</h4>
+      <p data-i18n="expertise.card4_p">الامتثال الضريبي للشركات، إدارة عقود الإيجار والعقود، تحصيل الشيكات المرتجعة والتصعيد القانوني.</p>
+    </div>
+    <div class="expertise-card" style="grid-column:1/-1;">
+      <h4 data-i18n="expertise.card5_h">دعم البنية التحتية لتقنية المعلومات</h4>
+      <p data-i18n="expertise.card5_p">ربط الشبكات (المحولات، إعدادات IP)، إدارة أنظمة Windows، صيانة الأجهزة، مراقبة أنظمة الكاميرات (CCTV).</p>
+    </div>
+  </div>
+</section>
+
+<!-- KEY PROJECTS -->
+<section id="software">
+  <div class="eyebrow"><span data-i18n="software.eyebrow">STG.03 — المشاريع الرئيسية</span></div>
+  <h2 class="section-title" data-i18n="software.title">أنظمة أعمال مدعومة بالذكاء الاصطناعي</h2>
+
+  <div class="software-hero reveal">
+    <p style="max-width:760px; color:var(--ink-muted); margin:0;" data-i18n="software.intro">
+      يصمم أنظمة أعمال من خلال تحديد المتطلبات وسير العمل ومنطق العمل، ثم يوجه أدوات التطوير بدون
+      برمجة المدعومة بالذكاء الاصطناعي. يراجع النتائج، ويحدد الثغرات، ويطلب التحسينات، ويختبر كل حل
+      مقابل سير العمل اليومي الفعلي قبل التطبيق.
+    </p>
+  </div>
+
+  <div class="project-block reveal">
+    <div class="project-head">
+      <h3 data-i18n="project1.title">1. نظام متابعة الإنتاج (تطوير بدون برمجة / بمساعدة الذكاء الاصطناعي)</h3>
+      <span class="status-chip" data-i18n="project1.status">قيد التجربة التجريبية حاليًا</span>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="fc-code">PRJ.01</span>
+        <h4 data-i18n="p1.fn1_h">تحديد المتطلبات والتوجيه</h4>
+        <p data-i18n="p1.fn1_p">حدّد متطلبات النظام ومنطق العمل، ووجّه عملية التطوير الكاملة لنظام متابعة تشغيلي شبكي مخصص باستخدام أدوات بدون برمجة مدعومة بالذكاء الاصطناعي، يغطي دورة الإنتاج الكاملة من استلام المواد الخام وحتى التسليم النهائي.</p>
+      </div>
+      <div class="feature-card">
+        <span class="fc-code">PRJ.02</span>
+        <h4 data-i18n="p1.fn2_h">نشر متعدد اللغات</h4>
+        <p data-i18n="p1.fn2_p">أشرف على بناء واجهة كاملة الوظائف تدعم أربع لغات (العربية والإنجليزية والفرنسية والألمانية)، مع تفضيلات لغة مستقلة لكل مستخدم.</p>
+      </div>
+      <div class="feature-card">
+        <span class="fc-code">PRJ.03</span>
+        <h4 data-i18n="p1.fn3_h">أتمتة العمليات</h4>
+        <p data-i18n="p1.fn3_p">حدّد هياكل سير العمل المخصصة والصلاحيات المبنية على الأدوار، بما يمكّن الموظفين غير التقنيين من تنفيذ دورات إنتاج كاملة دون أي كتابة كود يدوية.</p>
+      </div>
+      <div class="feature-card">
+        <span class="fc-code">PRJ.04</span>
+        <h4 data-i18n="p1.fn4_h">النتيجة</h4>
+        <p data-i18n="p1.fn4_p">تسليم حل تنظيمي قابل للتوسع وبدون برمجة يربط بين الرقابة المالية والتنفيذ التشغيلي، ويجري حاليًا تجربته تمهيدًا للتشغيل الكامل.</p>
+      </div>
+      <div class="feature-card">
+        <span class="fc-code">PRJ.05</span>
+        <h4 data-i18n="p1.fn5_h">النشر والصيانة</h4>
+        <p data-i18n="p1.fn5_p">نشر النظام بتهيئة جهاز كمبيوتر مكتبي عادي ليعمل كخادم شبكة محلي (XAMPP)، وإدارة صلاحيات الوصول عبر شبكة الشركة، ويواصل تقديم صيانة تقنية مستمرة (إعادة تثبيت أنظمة التشغيل، وتهيئة الشبكة) للحفاظ على تشغيل النظام.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-block reveal">
+    <div class="project-head">
+      <h3 data-i18n="project2.title">2. نظام الحضور وإدارة الوقت (تطوير بدون برمجة / بمساعدة الذكاء الاصطناعي)</h3>
+      <span class="status-chip active" data-i18n="project2.status">قيد الاستخدام الفعلي</span>
+    </div>
+    <p class="project-p" data-i18n="project2.p">
+      وجّه تصميم وتطوير نظام قائم على الشبكة لمتابعة حضور وأوقات عمل القوى العاملة، باستخدام نفس النهج
+      المدعوم بالذكاء الاصطناعي بدون برمجة والمنهجية القائمة على المتطلبات المستخدمة في نظام متابعة
+      الإنتاج. تم تسليمه، ويُستخدم فعليًا من قبل الشركة للمتابعة اليومية لحضور وأوقات عمل القوى العاملة.
+    </p>
+  </div>
+</section>
+
+<!-- EXPERIENCE TIMELINE -->
+<section id="experience">
+  <div class="eyebrow"><span data-i18n="experience.eyebrow">STG.04 — المسيرة المهنية</span></div>
+  <h2 class="section-title" data-i18n="experience.title">الخبرة المهنية</h2>
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <span class="tl-date" data-i18n="experience.tl1_date">2024 — حتى الآن</span>
+      <h4 data-i18n="experience.tl1_h">محلل بيانات مالية وتشغيلية أول / محاسب</h4>
+      <div class="tl-company" data-i18n="experience.tl1_company">شركة النسيج الوطنية (NATEX) — مصر</div>
+      <p data-i18n="experience.tl1_p">أشرف على بناء وتطوير ونشر أنظمة أعمال مخصصة بدون برمجة وبمساعدة الذكاء الاصطناعي (انظر أبرز المشاريع أعلاه)؛ جمّع وحلّل بيانات المصنع متعددة الأقسام (المالية، التشغيل، الموارد البشرية) لإنشاء مصدر بيانات موحّد وموثوق لدعم القرارات التنفيذية؛ دمج السجلات المالية (الرواتب والتكاليف التشغيلية) مع مؤشرات القوى العاملة لحساب مؤشرات الكفاءة التشغيلية؛ وأعدّ وقدّم تقارير تحليلية مبنية على البيانات إلى الإدارة العليا لتوجيه تخصيص الموارد والتخطيط الاستراتيجي.</p>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date" data-i18n="experience.tl2_date">2022 — 2024</span>
+      <h4 data-i18n="experience.tl2_h">محاسب مالي أول وأخصائي موارد بشرية</h4>
+      <div class="tl-company" data-i18n="experience.tl2_company">We Care لتوزيع الأدوية ووكالة 12A للتسويق — مصر</div>
+      <p data-i18n="experience.tl2_p">أدار العمليات المالية والمحاسبية والموارد البشرية عبر كيانين تابعين للمجموعة: We Care (توزيع الأدوية) ووكالة 12A للتسويق؛ أشرف على هياكل دفتر الأستاذ العام، والموازنات التشغيلية، وتتبع تكاليف الخدمات اللوجستية للتوزيع، والتدفقات النقدية؛ وأدار معالجة الرواتب، وسجلات الموظفين، وتسويات حسابات العملاء، ومدفوعات الموردين.</p>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date" data-i18n="experience.tl3_date">2019 — 2022</span>
+      <h4 data-i18n="experience.tl3_h">مستشار مالي وتشغيلي مستقل</h4>
+      <div class="tl-company" data-i18n="experience.tl3_company">استشارات مستقلة</div>
+      <p data-i18n="experience.tl3_p">قدّم خدمات تحليل مالي مستقلة، وضبط تكاليف، وتقارير تشغيلية لصالح شركات صغيرة ومتوسطة؛ أجرى أبحاث سوقية ونمذجة بيانات مالية لدعم قرارات الأعمال خلال فترات الاضطراب الاقتصادي؛ وطوّر مهاراته في التحليل المتقدم للبيانات وتحسين العمليات وأدوات الأتمتة الحديثة لتبسيط سير عمل إعداد التقارير.</p>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date" data-i18n="experience.tl4_date">2012 — 2019</span>
+      <h4 data-i18n="experience.tl4_h">منسق الأصول المالية والضرائب</h4>
+      <div class="tl-company" data-i18n="experience.tl4_company">شركة بالحصا للعقارات (مجموعة بالحصا) — دبي، الإمارات</div>
+      <p data-i18n="experience.tl4_p">أدار أطر التحصيل المالي ومسارات التصعيد القانوني للشيكات المرتجعة عبر محافظ المجموعة؛ أشرف على الأصول العقارية وعقود إيجار الأراضي الصناعية في إطار مؤسسة دبي للعقارات (DREC)؛ وأدار عقود الإيجار التجارية وعقود سكن العمالة، والامتثال الضريبي للشركات وضريبة القيمة المضافة.</p>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date" data-i18n="experience.tl5_date">2006 — 2012</span>
+      <h4 data-i18n="experience.tl5_h">أخصائي تخطيط إنتاج ومحاسب</h4>
+      <div class="tl-company" data-i18n="experience.tl5_company">شركة النسيج الوطنية (NATEX) — مصر</div>
+      <p data-i18n="experience.tl5_p">أدار المحاسبة المالية مع الإشراف على جدولة الإنتاج وتحسين سير العمل داخل المصنع، وعزّز معايير ضبط التكاليف من خلال تدقيق دقيق للمواد الخام والتكاليف الصناعية غير المباشرة.</p>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date" data-i18n="experience.tl6_date">2003 — 2006</span>
+      <h4 data-i18n="experience.tl6_h">مدرّس حاسب آلي ورياضيات / منسق معمل تقنية المعلومات</h4>
+      <div class="tl-company" data-i18n="experience.tl6_company">وزارة التربية والتعليم — ليبيا</div>
+      <p data-i18n="experience.tl6_p">درّس مناهج الحاسب الآلي والرياضيات، معززًا مهارات الطلاب التحليلية والمنطقية وحل المشكلات الكمية؛ أدار تجهيزات معمل الحاسب الآلي، وأشرف على التدريب العملي على البرمجيات، وقام بأعمال استكشاف الأعطال والصيانة الروتينية للأنظمة.</p>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date" data-i18n="experience.tl7_date">2001 — 2003</span>
+      <h4 data-i18n="experience.tl7_h">محاسب – أخصائي رواتب وتعويضات</h4>
+      <div class="tl-company" data-i18n="experience.tl7_company">شركة GAT للملابس الصناعية — مصر</div>
+      <p data-i18n="experience.tl7_p">قاد إعادة الهيكلة الرقمية لمصفوفات الرواتب وهياكل التعويضات وتسويات حسابات الموظفين.</p>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date" data-i18n="experience.tl8_date">1998 — 2001</span>
+      <h4 data-i18n="experience.tl8_h">محاسب وأخصائي مشتريات</h4>
+      <div class="tl-company" data-i18n="experience.tl8_company">السيد للتريكو والملابس (El Sayad for Tricot &amp; Garments) — مصر</div>
+      <p data-i18n="experience.tl8_p">أدار دفاتر المشتريات وحسابات الموردين وتحليل تكاليف التوريد لتحسين مخزون المواد الخام.</p>
+    </div>
+  </div>
+
+  <div class="edu-skills-grid">
+    <div class="mini-card">
+      <h4 data-i18n="edu.title">المؤهل الدراسي</h4>
+      <p style="margin:0; color:var(--ink-muted); font-size:0.9rem;" data-i18n="edu.text">
+        بكالوريوس تجارة، شعبة المحاسبة — كلية التجارة، مصر (1998)
+      </p>
+    </div>
+    <div class="mini-card">
+      <h4 data-i18n="skills.title">اللغات والمهارات التقنية</h4>
+      <div class="tag-row">
+        <span class="skill-tag" data-i18n="skills.tag1">العربية (اللغة الأم)</span>
+        <span class="skill-tag" data-i18n="skills.tag2">الإنجليزية (كفاءة مهنية جيدة)</span>
+        <span class="skill-tag" data-i18n="skills.tag3">Excel وPower BI متقدم</span>
+        <span class="skill-tag" data-i18n="skills.tag4">أنظمة المراقبة CCTV</span>
+        <span class="skill-tag" data-i18n="skills.tag5">إدارة شبكات وWindows</span>
+        <span class="skill-tag" data-i18n="skills.tag6">هندسة أوامر الذكاء الاصطناعي</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="eyebrow"><span data-i18n="contact.eyebrow">STG.05 — تواصل</span></div>
+  <h2 class="section-title" data-i18n="contact.title">عايز تتواصل معايا؟</h2>
+  <div class="contact-box reveal">
+    <div class="contact-item">
+      <span class="lbl" data-i18n="contact.phone_label">الهاتف</span>
+      <span class="val"><bdi dir="ltr"><a href="tel:+201151200917">+20 115 120 0917</a></bdi></span>
+    </div>
+    <div class="contact-item">
+      <span class="lbl" data-i18n="contact.linkedin_label">LinkedIn</span>
+      <span class="val"><bdi dir="ltr"><a href="https://www.linkedin.com/in/hesham-hussein-eg" target="_blank" rel="noopener">linkedin.com/in/hesham-hussein-eg</a></bdi></span>
+    </div>
+    <div class="contact-item">
+      <span class="lbl" data-i18n="contact.email_label">البريد الإلكتروني</span>
+      <span class="val"><bdi dir="ltr"><a href="mailto:hesham.hussein.m@gmail.com">hesham.hussein.m@gmail.com</a></bdi></span>
+    </div>
+    <div class="contact-item">
+      <span class="lbl" data-i18n="contact.location_label">الموقع</span>
+      <span class="val" data-i18n="contact.location_value">مصر (منفتح على الانتقال الدولي)</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span data-i18n="footer.copyright">© <span id="year"></span> هشام حسين علي متولي — جميع الحقوق محفوظة.</span>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ============ i18n ============
+  const TRANSLATIONS = {
+    ar: {
+      brand: "هشام حسين علي متولي",
+      "nav.profile": "البروفايل", "nav.expertise": "مجالات الخبرة", "nav.software": "المشاريع الرئيسية",
+      "nav.experience": "المسيرة المهنية", "nav.contact": "تواصل",
+      "rail.profile": "البروفايل", "rail.expertise": "الخبرة", "rail.software": "المشاريع",
+      "rail.experience": "المسيرة", "rail.contact": "تواصل",
+      "hero.tag": "+25 سنة خبرة دولية — مصر، ليبيا، الإمارات",
+      "hero.name": "هشام حسين علي متولي",
+      "hero.role": "محلل بيانات مالية وتشغيلية | يبني أنظمة ذكاء اصطناعي و No-Code تدير العمليات",
+      "hero.lead": "خبير مالي ومحلل بيانات تشغيلية بخبرة دولية تفوق 25 عامًا في مصر وليبيا والإمارات، متخصص في النمذجة المتقدمة للبيانات باستخدام Excel، ويستخدم Power BI لبناء لوحات متابعة تنفيذية تدعم اتخاذ القرار المبني على البيانات.",
+      "hero.cta1": "المسيرة المهنية", "hero.cta2": "تواصل معايا",
+      "profile.eyebrow": "STG.01 — البروفايل", "profile.title": "الملخص المهني", "profile.initial": "هـ",
+      "profile.bio": "خبير مالي ومحلل بيانات تشغيلية بخبرة دولية تفوق 25 عامًا في مصر وليبيا والإمارات. متخصص في النمذجة المتقدمة للبيانات باستخدام Excel والتحليل التشغيلي، مع استخدام Power BI لبناء لوحات متابعة تنفيذية تدعم اتخاذ القرار المبني على البيانات. يجمع بين خبرة مالية ومحاسبية قوية وخبرة عملية في بناء وتطوير مشاريع الأتمتة بدون برمجة (No-Code) وإدارتها بمساعدة الذكاء الاصطناعي، بالإضافة إلى دعم البنية التحتية لتقنية المعلومات.",
+      "profile.kv_location_label": "الموقع", "profile.kv_location_value": "مصر (منفتح على الانتقال الدولي)",
+      "profile.kv_email_label": "البريد", "profile.kv_phone_label": "الهاتف", "profile.kv_linkedin_label": "LinkedIn",
+      "profile.stat1_lbl": "سنة خبرة دولية", "profile.stat2_lbl": "دول: مصر، ليبيا، الإمارات",
+      "profile.stat3_lbl": "أنظمة بدون برمجة مطوَّرة بمساعدة الذكاء الاصطناعي", "profile.stat4_lbl": "لغات في الأنظمة المطوَّرة",
+      "expertise.eyebrow": "STG.02 — مجالات الخبرة", "expertise.title": "المهارات والكفاءات الأساسية",
+      "expertise.card1_h": "تحليل البيانات والتصور المرئي", "expertise.card1_p": "Excel Microsoft المتقدم (نمذجة البيانات، الجداول المحورية، المعادلات المعقدة)، Power BI (لوحات المتابعة والتقارير التنفيذية)، اتخاذ القرار المبني على البيانات.",
+      "expertise.card2_h": "التحليل المالي والتشغيلي", "expertise.card2_p": "المحاسبة المالية، مؤشرات الأداء الرئيسية (KPIs)، تحليل التكاليف المتقدم، تكامل البيانات متعددة الأقسام، الموازنة والتنبؤ المالي.",
+      "expertise.card3_h": "الذكاء الاصطناعي وأتمتة سير العمل", "expertise.card3_p": "هندسة الأوامر النصية للذكاء الاصطناعي، إدارة وتوجيه تطوير الأنظمة المدعومة بالذكاء الاصطناعي، والبناء والتطوير العملي لتطبيقات بدون برمجة، تحسين العمليات.",
+      "expertise.card4_h": "إدارة الأصول والامتثال", "expertise.card4_p": "الامتثال الضريبي للشركات، إدارة عقود الإيجار والعقود، تحصيل الشيكات المرتجعة والتصعيد القانوني.",
+      "expertise.card5_h": "دعم البنية التحتية لتقنية المعلومات", "expertise.card5_p": "ربط الشبكات (المحولات، إعدادات IP)، إدارة أنظمة Windows، صيانة الأجهزة، مراقبة أنظمة الكاميرات (CCTV).",
+      "software.eyebrow": "STG.03 — المشاريع الرئيسية", "software.title": "أنظمة أعمال مدعومة بالذكاء الاصطناعي",
+      "software.intro": "يصمم أنظمة أعمال من خلال تحديد المتطلبات وسير العمل ومنطق العمل، ثم يوجه أدوات التطوير بدون برمجة المدعومة بالذكاء الاصطناعي. يراجع النتائج، ويحدد الثغرات، ويطلب التحسينات، ويختبر كل حل مقابل سير العمل اليومي الفعلي قبل التطبيق.",
+      "project1.status": "قيد التجربة التجريبية حاليًا", "project1.title": "1. نظام متابعة الإنتاج (تطوير بدون برمجة / بمساعدة الذكاء الاصطناعي)",
+      "p1.fn1_h": "تحديد المتطلبات والتوجيه", "p1.fn1_p": "حدّد متطلبات النظام ومنطق العمل، ووجّه عملية التطوير الكاملة لنظام متابعة تشغيلي شبكي مخصص باستخدام أدوات بدون برمجة مدعومة بالذكاء الاصطناعي، يغطي دورة الإنتاج الكاملة من استلام المواد الخام وحتى التسليم النهائي.",
+      "p1.fn2_h": "نشر متعدد اللغات", "p1.fn2_p": "أشرف على بناء واجهة كاملة الوظائف تدعم أربع لغات (العربية والإنجليزية والفرنسية والألمانية)، مع تفضيلات لغة مستقلة لكل مستخدم.",
+      "p1.fn3_h": "أتمتة العمليات", "p1.fn3_p": "حدّد هياكل سير العمل المخصصة والصلاحيات المبنية على الأدوار، بما يمكّن الموظفين غير التقنيين من تنفيذ دورات إنتاج كاملة دون أي كتابة كود يدوية.",
+      "p1.fn4_h": "النتيجة", "p1.fn4_p": "تسليم حل تنظيمي قابل للتوسع وبدون برمجة يربط بين الرقابة المالية والتنفيذ التشغيلي، ويجري حاليًا تجربته تمهيدًا للتشغيل الكامل.",
+      "p1.fn5_h": "النشر والصيانة", "p1.fn5_p": "نشر النظام بتهيئة جهاز كمبيوتر مكتبي عادي ليعمل كخادم شبكة محلي (XAMPP)، وإدارة صلاحيات الوصول عبر شبكة الشركة، ويواصل تقديم صيانة تقنية مستمرة (إعادة تثبيت أنظمة التشغيل، وتهيئة الشبكة) للحفاظ على تشغيل النظام.",
+      "project2.status": "قيد الاستخدام الفعلي", "project2.title": "2. نظام الحضور وإدارة الوقت (تطوير بدون برمجة / بمساعدة الذكاء الاصطناعي)",
+      "project2.p": "وجّه تصميم وتطوير نظام قائم على الشبكة لمتابعة حضور وأوقات عمل القوى العاملة، باستخدام نفس النهج المدعوم بالذكاء الاصطناعي بدون برمجة والمنهجية القائمة على المتطلبات المستخدمة في نظام متابعة الإنتاج. تم تسليمه، ويُستخدم فعليًا من قبل الشركة للمتابعة اليومية لحضور وأوقات عمل القوى العاملة.",
+      "experience.eyebrow": "STG.04 — المسيرة المهنية", "experience.title": "الخبرة المهنية",
+      "experience.tl1_date": "2024 — حتى الآن", "experience.tl1_h": "محلل بيانات مالية وتشغيلية أول / محاسب",
+      "experience.tl1_company": "شركة النسيج الوطنية (NATEX) — مصر",
+      "experience.tl1_p": "أشرف على بناء وتطوير ونشر أنظمة أعمال مخصصة بدون برمجة وبمساعدة الذكاء الاصطناعي (انظر أبرز المشاريع أعلاه)؛ جمّع وحلّل بيانات المصنع متعددة الأقسام (المالية، التشغيل، الموارد البشرية) لإنشاء مصدر بيانات موحّد وموثوق لدعم القرارات التنفيذية؛ دمج السجلات المالية (الرواتب والتكاليف التشغيلية) مع مؤشرات القوى العاملة لحساب مؤشرات الكفاءة التشغيلية؛ وأعدّ وقدّم تقارير تحليلية مبنية على البيانات إلى الإدارة العليا لتوجيه تخصيص الموارد والتخطيط الاستراتيجي.",
+      "experience.tl2_date": "2022 — 2024", "experience.tl2_h": "محاسب مالي أول وأخصائي موارد بشرية",
+      "experience.tl2_company": "We Care لتوزيع الأدوية ووكالة 12A للتسويق — مصر",
+      "experience.tl2_p": "أدار العمليات المالية والمحاسبية والموارد البشرية عبر كيانين تابعين للمجموعة: We Care (توزيع الأدوية) ووكالة 12A للتسويق؛ أشرف على هياكل دفتر الأستاذ العام، والموازنات التشغيلية، وتتبع تكاليف الخدمات اللوجستية للتوزيع، والتدفقات النقدية؛ وأدار معالجة الرواتب، وسجلات الموظفين، وتسويات حسابات العملاء، ومدفوعات الموردين.",
+      "experience.tl3_date": "2019 — 2022", "experience.tl3_h": "مستشار مالي وتشغيلي مستقل",
+      "experience.tl3_company": "استشارات مستقلة",
+      "experience.tl3_p": "قدّم خدمات تحليل مالي مستقلة، وضبط تكاليف، وتقارير تشغيلية لصالح شركات صغيرة ومتوسطة؛ أجرى أبحاث سوقية ونمذجة بيانات مالية لدعم قرارات الأعمال خلال فترات الاضطراب الاقتصادي؛ وطوّر مهاراته في التحليل المتقدم للبيانات وتحسين العمليات وأدوات الأتمتة الحديثة لتبسيط سير عمل إعداد التقارير.",
+      "experience.tl4_date": "2012 — 2019", "experience.tl4_h": "منسق الأصول المالية والضرائب",
+      "experience.tl4_company": "شركة بالحصا للعقارات (مجموعة بالحصا) — دبي، الإمارات",
+      "experience.tl4_p": "أدار أطر التحصيل المالي ومسارات التصعيد القانوني للشيكات المرتجعة عبر محافظ المجموعة؛ أشرف على الأصول العقارية وعقود إيجار الأراضي الصناعية في إطار مؤسسة دبي للعقارات (DREC)؛ وأدار عقود الإيجار التجارية وعقود سكن العمالة، والامتثال الضريبي للشركات وضريبة القيمة المضافة.",
+      "experience.tl5_date": "2006 — 2012", "experience.tl5_h": "أخصائي تخطيط إنتاج ومحاسب",
+      "experience.tl5_company": "شركة النسيج الوطنية (NATEX) — مصر",
+      "experience.tl5_p": "أدار المحاسبة المالية مع الإشراف على جدولة الإنتاج وتحسين سير العمل داخل المصنع، وعزّز معايير ضبط التكاليف من خلال تدقيق دقيق للمواد الخام والتكاليف الصناعية غير المباشرة.",
+      "experience.tl6_date": "2003 — 2006", "experience.tl6_h": "مدرّس حاسب آلي ورياضيات / منسق معمل تقنية المعلومات",
+      "experience.tl6_company": "وزارة التربية والتعليم — ليبيا",
+      "experience.tl6_p": "درّس مناهج الحاسب الآلي والرياضيات، معززًا مهارات الطلاب التحليلية والمنطقية وحل المشكلات الكمية؛ أدار تجهيزات معمل الحاسب الآلي، وأشرف على التدريب العملي على البرمجيات، وقام بأعمال استكشاف الأعطال والصيانة الروتينية للأنظمة.",
+      "experience.tl7_date": "2001 — 2003", "experience.tl7_h": "محاسب – أخصائي رواتب وتعويضات",
+      "experience.tl7_company": "شركة GAT للملابس الصناعية — مصر",
+      "experience.tl7_p": "قاد إعادة الهيكلة الرقمية لمصفوفات الرواتب وهياكل التعويضات وتسويات حسابات الموظفين.",
+      "experience.tl8_date": "1998 — 2001", "experience.tl8_h": "محاسب وأخصائي مشتريات",
+      "experience.tl8_company": "السيد للتريكو والملابس (El Sayad for Tricot &amp; Garments) — مصر",
+      "experience.tl8_p": "أدار دفاتر المشتريات وحسابات الموردين وتحليل تكاليف التوريد لتحسين مخزون المواد الخام.",
+      "edu.title": "المؤهل الدراسي", "edu.text": "بكالوريوس تجارة، شعبة المحاسبة — كلية التجارة، مصر (1998)",
+      "skills.title": "اللغات والمهارات التقنية",
+      "skills.tag1": "العربية (اللغة الأم)", "skills.tag2": "الإنجليزية (كفاءة مهنية جيدة)", "skills.tag3": "Excel وPower BI متقدم",
+      "skills.tag4": "أنظمة المراقبة CCTV", "skills.tag5": "إدارة شبكات وWindows", "skills.tag6": "هندسة أوامر الذكاء الاصطناعي",
+      "contact.eyebrow": "STG.05 — تواصل", "contact.title": "عايز تتواصل معايا؟",
+      "contact.phone_label": "الهاتف", "contact.linkedin_label": "LinkedIn",
+      "contact.email_label": "البريد الإلكتروني", "contact.location_label": "الموقع", "contact.location_value": "مصر (منفتح على الانتقال الدولي)",
+      "footer.copyright": '© <span id="year"></span> هشام حسين علي متولي — جميع الحقوق محفوظة.',
+      pageTitle: "هشام حسين علي متولي | محلل بيانات مالية وتشغيلية | يبني أنظمة ذكاء اصطناعي و No-Code تدير العمليات",
+      pageDesc: "هشام حسين علي متولي — محلل بيانات مالية وتشغيلية بخبرة دولية تفوق 25 عامًا في مصر وليبيا والإمارات، ومصمم أنظمة أعمال بدون برمجة مدعومة بالذكاء الاصطناعي."
+    },
+    en: {
+      brand: "Hesham Hussein Ali Metwally",
+      "nav.profile": "Profile", "nav.expertise": "Expertise", "nav.software": "Key Projects",
+      "nav.experience": "Experience", "nav.contact": "Contact",
+      "rail.profile": "Profile", "rail.expertise": "Expertise", "rail.software": "Projects",
+      "rail.experience": "Experience", "rail.contact": "Contact",
+      "hero.tag": "25+ Years International Experience — Egypt, Libya, UAE",
+      "hero.name": "Hesham Hussein Ali Metwally",
+      "hero.role": "Financial &amp; Operational Data Analyst | Builds AI &amp; No-Code Systems That Run Operations",
+      "hero.lead": "Financial expert and operational data analyst with over 25 years of international experience across Egypt, Libya, and the UAE. Specialised in advanced Excel data modelling and operational analytics, using Power BI to build executive dashboards that support data-informed decisions.",
+      "hero.cta1": "Career Journey", "hero.cta2": "Get in Touch",
+      "profile.eyebrow": "STG.01 — Profile", "profile.title": "Professional Summary", "profile.initial": "H",
+      "profile.bio": "Financial expert and operational data analyst with over 25 years of international experience across Egypt, Libya, and the UAE. Specialised in advanced Excel data modelling and operational analytics, using Power BI to build executive dashboards that support data-informed decisions. Combines strong financial and accounting expertise with hands-on experience building, developing, and directing AI-assisted, no-code automation projects, and IT infrastructure support.",
+      "profile.kv_location_label": "Location", "profile.kv_location_value": "Egypt (Open to International Relocation)",
+      "profile.kv_email_label": "Email", "profile.kv_phone_label": "Phone", "profile.kv_linkedin_label": "LinkedIn",
+      "profile.stat1_lbl": "years of international experience", "profile.stat2_lbl": "countries: Egypt, Libya, UAE",
+      "profile.stat3_lbl": "AI-assisted no-code systems delivered", "profile.stat4_lbl": "languages supported in deployed systems",
+      "expertise.eyebrow": "STG.02 — Expertise", "expertise.title": "Core Competencies &amp; Skills",
+      "expertise.card1_h": "Data Analytics &amp; Visualisation", "expertise.card1_p": "Advanced Microsoft Excel (data modelling, pivot tables, complex formulas), Power BI (dashboards &amp; executive reporting), data-driven decision making.",
+      "expertise.card2_h": "Financial &amp; Operations Analytics", "expertise.card2_p": "Financial accounting, KPIs, advanced cost analysis, cross-sectional data integration, budgeting &amp; forecasting.",
+      "expertise.card3_h": "AI &amp; Workflow Automation", "expertise.card3_p": "AI prompt engineering, managing and directing AI-assisted system development, practical building and development of no-code applications, process optimisation.",
+      "expertise.card4_h": "Asset &amp; Compliance", "expertise.card4_p": "Corporate tax compliance, lease &amp; contract administration, bounced-cheque recovery &amp; legal escalation.",
+      "expertise.card5_h": "IT Infrastructure Support", "expertise.card5_p": "Network connectivity (switches, IP configuration), Windows systems administration, hardware maintenance, CCTV system monitoring.",
+      "software.eyebrow": "STG.03 — Key Projects", "software.title": "AI-Assisted Business Systems",
+      "software.intro": "Designs business systems by defining requirements, workflows, and business logic, then directs AI-assisted/no-code development tools. Reviews results, identifies gaps, requests refinements, and tests each solution against real day-to-day workflows before rollout.",
+      "project1.status": "Currently in pilot testing", "project1.title": "1. Production Tracking System (No-Code / AI-Assisted Development)",
+      "p1.fn1_h": "Requirements &amp; Direction", "p1.fn1_p": "Defined system requirements and business logic and directed the end-to-end development of a custom network-based operational tracking system using AI-assisted, no-code tools — covering the full production cycle from raw-material receipt to final delivery.",
+      "p1.fn2_h": "Multi-Language Deployment", "p1.fn2_p": "Directed the build-out of a fully functional interface supporting four languages (Arabic, English, French, and German), with per-user language preferences.",
+      "p1.fn3_h": "Process Automation", "p1.fn3_p": "Specified custom workflow structures and role-based permissions, enabling non-technical staff to run complete production cycles without any manual coding.",
+      "p1.fn4_h": "Outcome", "p1.fn4_p": "Delivered a scalable, zero-code orchestration solution that bridges financial control and operational execution, currently being piloted ahead of full operational rollout.",
+      "p1.fn5_h": "Deployment &amp; Maintenance", "p1.fn5_p": "Deployed the system by configuring a standard office PC as a local network server (XAMPP), managed device-level access permissions across the company network, and continues to provide ongoing IT maintenance (OS reinstalls, network configuration) to keep the system running.",
+      "project2.status": "In active use", "project2.title": "2. Attendance &amp; Time Management System (No-Code / AI-Assisted Development)",
+      "project2.p": "Directed the design and development of a network-based system for workforce attendance and time tracking, using the same AI-assisted, no-code approach and requirement-driven methodology as the Production Tracking System. Delivered and actively used by the company for daily workforce attendance and time tracking.",
+      "experience.eyebrow": "STG.04 — Experience", "experience.title": "Professional Experience",
+      "experience.tl1_date": "2024 — Present", "experience.tl1_h": "Senior Financial &amp; Operational Data Analyst / Accountant",
+      "experience.tl1_company": "National Textile Industries (NATEX) — Egypt",
+      "experience.tl1_p": "Directed the building, development, and deployment of custom AI-assisted, no-code business systems (see Key Projects above); consolidated and analysed multi-departmental factory data (Finance, Operations, HR) to establish a single source of truth for executive decision-making; merged financial records (payroll and operational costs) with headcount metrics to compute operational efficiency KPIs; and prepared and presented data-driven analytical reports to senior management to guide resource allocation and strategic planning.",
+      "experience.tl2_date": "2022 — 2024", "experience.tl2_h": "Senior Financial Accountant &amp; HR Specialist",
+      "experience.tl2_company": "We Care Pharma Distribution &amp; 12A Marketing Agency — Egypt",
+      "experience.tl2_p": "Managed dual financial accounting and HR operations across two group entities: We Care (pharma distribution) and 12A Marketing Agency; oversaw general ledger structures, operational budgets, distribution logistics cost tracking, and cash flows; and administered payroll processing, personnel records, client account reconciliations, and vendor payments.",
+      "experience.tl3_date": "2019 — 2022", "experience.tl3_h": "Freelance Financial &amp; Operations Consultant",
+      "experience.tl3_company": "Independent Consulting",
+      "experience.tl3_p": "Provided freelance financial analysis, cost control, and operational reporting services for small-to-medium enterprises (SMEs); conducted market research and financial data modelling to support business decisions during periods of economic disruption; and upskilled in advanced data analytics, process optimisation, and modern automation tools to streamline reporting workflows.",
+      "experience.tl4_date": "2012 — 2019", "experience.tl4_h": "Financial Asset &amp; Tax Coordinator",
+      "experience.tl4_company": "Belhasa Real Estate (Belhasa Group) — Dubai, UAE",
+      "experience.tl4_p": "Managed financial collection frameworks and legal escalation pathways for bounced cheques across group portfolios; oversaw real estate assets and industrial land leases under Dubai Real Estate Corporation (DREC); and administered commercial leases, labour accommodation contracts, corporate tax, and VAT compliance processes.",
+      "experience.tl5_date": "2006 — 2012", "experience.tl5_h": "Production Planning Specialist &amp; Accountant",
+      "experience.tl5_company": "National Textile Industries (NATEX) — Egypt",
+      "experience.tl5_p": "Managed financial accounting while supervising production scheduling and factory workflow optimisation, and enhanced cost-control standards through rigorous audits of raw materials and manufacturing overheads.",
+      "experience.tl6_date": "2003 — 2006", "experience.tl6_h": "Computer Science &amp; Mathematics Teacher / IT Lab Coordinator",
+      "experience.tl6_company": "Ministry of Education, Libya",
+      "experience.tl6_p": "Taught computer science and mathematics curricula, strengthening students' analytical, logical reasoning, and quantitative problem-solving skills; managed computer laboratory equipment, supervised practical software training, and performed routine system troubleshooting and maintenance.",
+      "experience.tl7_date": "2001 — 2003", "experience.tl7_h": "Accountant – Payroll &amp; Compensation Specialist",
+      "experience.tl7_company": "GAT Industrial Garments — Egypt",
+      "experience.tl7_p": "Led the digital restructuring of payroll matrices, compensation structures, and employee account reconciliations.",
+      "experience.tl8_date": "1998 — 2001", "experience.tl8_h": "Accountant &amp; Procurement Specialist",
+      "experience.tl8_company": "El Sayad for Tricot &amp; Garments — Egypt",
+      "experience.tl8_p": "Managed purchasing ledgers, vendor accounts, and procurement cost analysis to optimise raw material inventory.",
+      "edu.title": "Education", "edu.text": "Bachelor of Commerce (B.Com) – Major in Accounting | Faculty of Commerce, Egypt (1998)",
+      "skills.title": "Languages &amp; Technical Skills",
+      "skills.tag1": "Arabic (Native)", "skills.tag2": "English (Professional Working Proficiency)", "skills.tag3": "Advanced Excel &amp; Power BI",
+      "skills.tag4": "CCTV Surveillance Systems", "skills.tag5": "Network &amp; Windows Administration", "skills.tag6": "AI Prompt Engineering",
+      "contact.eyebrow": "STG.05 — Contact", "contact.title": "Want to Get in Touch?",
+      "contact.phone_label": "Phone", "contact.linkedin_label": "LinkedIn",
+      "contact.email_label": "Email", "contact.location_label": "Location", "contact.location_value": "Egypt (Open to International Relocation)",
+      "footer.copyright": '© <span id="year"></span> Hesham Hussein Ali Metwally — All rights reserved.',
+      pageTitle: "Hesham Hussein Ali Metwally | Financial &amp; Operational Data Analyst | Builds AI &amp; No-Code Systems That Run Operations",
+      pageDesc: "Hesham Hussein Ali Metwally — Financial & Operational Data Analyst with 25+ years of experience across Egypt, Libya, and the UAE, directing AI-assisted no-code business systems."
+    },
+    fr: {
+      brand: "Hesham Hussein Ali Metwally",
+      "nav.profile": "Profil", "nav.expertise": "Expertise", "nav.software": "Projets clés",
+      "nav.experience": "Parcours", "nav.contact": "Contact",
+      "rail.profile": "Profil", "rail.expertise": "Expertise", "rail.software": "Projets",
+      "rail.experience": "Parcours", "rail.contact": "Contact",
+      "hero.tag": "Plus de 25 ans d'expérience internationale — Égypte, Libye, EAU",
+      "hero.name": "Hesham Hussein Ali Metwally",
+      "hero.role": "Analyste de données financières et opérationnelles | Conçoit des systèmes IA et No-Code qui pilotent les opérations",
+      "hero.lead": "Expert financier et analyste de données opérationnelles avec plus de 25 ans d'expérience internationale en Égypte, en Libye et aux Émirats arabes unis. Spécialisé dans la modélisation avancée de données sur Excel, utilisant Power BI pour élaborer des tableaux de bord exécutifs soutenant la prise de décision basée sur les données.",
+      "hero.cta1": "Parcours professionnel", "hero.cta2": "Me contacter",
+      "profile.eyebrow": "STG.01 — Profil", "profile.title": "Profil professionnel", "profile.initial": "H",
+      "profile.bio": "Expert financier et analyste de données opérationnelles avec plus de 25 ans d'expérience internationale en Égypte, en Libye et aux Émirats arabes unis. Spécialisé dans la modélisation avancée de données sur Excel et l'analyse opérationnelle, utilisant Power BI pour élaborer des tableaux de bord exécutifs soutenant la prise de décision basée sur les données. Allie une solide expertise financière et comptable à une expérience pratique dans la création, le développement et la direction de projets d'automatisation sans code (No-Code) assistés par l'IA, ainsi que le support d'infrastructures IT.",
+      "profile.kv_location_label": "Localisation", "profile.kv_location_value": "Égypte (Ouvert à la relocalisation internationale)",
+      "profile.kv_email_label": "E-mail", "profile.kv_phone_label": "Téléphone", "profile.kv_linkedin_label": "LinkedIn",
+      "profile.stat1_lbl": "ans d'expérience internationale", "profile.stat2_lbl": "pays : Égypte, Libye, EAU",
+      "profile.stat3_lbl": "systèmes no-code assistés par IA livrés", "profile.stat4_lbl": "langues prises en charge dans les systèmes déployés",
+      "expertise.eyebrow": "STG.02 — Expertise", "expertise.title": "Compétences clés",
+      "expertise.card1_h": "Analyse &amp; Visualisation de Données", "expertise.card1_p": "Microsoft Excel avancé (modélisation de données, tableaux croisés dynamiques, formules complexes), Power BI (tableaux de bord &amp; rapports exécutifs), prise de décision basée sur les données.",
+      "expertise.card2_h": "Analyse Financière &amp; Opérationnelle", "expertise.card2_p": "Comptabilité financière, KPI, analyse avancée des coûts, intégration de données transversales, budgétisation &amp; prévisions.",
+      "expertise.card3_h": "IA &amp; Automatisation des Flux", "expertise.card3_p": "Ingénierie de prompts IA, gestion et direction du développement de systèmes assistés par IA, création et développement pratiques d'applications no-code, optimisation des processus.",
+      "expertise.card4_h": "Gestion d'Actifs &amp; Conformité", "expertise.card4_p": "Conformité fiscale des entreprises, gestion des baux et contrats, recouvrement de chèques sans provision &amp; procédures légales.",
+      "expertise.card5_h": "Support Infrastructure IT", "expertise.card5_p": "Connectivité réseau (switchs, configuration IP), administration système Windows, maintenance matérielle, vidéosurveillance (CCTV).",
+      "software.eyebrow": "STG.03 — Projets clés", "software.title": "Systèmes d'Entreprise Assistés par IA",
+      "software.intro": "Conçoit des systèmes d'entreprise en définissant les exigences, les flux de travail et la logique métier, puis dirige des outils de développement no-code assistés par IA. Examine les résultats, identifie les lacunes, demande des ajustements et teste chaque solution dans les conditions réelles de travail quotidien avant son déploiement.",
+      "project1.status": "Actuellement en phase pilote", "project1.title": "1. Système de Suivi de Production (Développement No-Code / Assisté par IA)",
+      "p1.fn1_h": "Exigences &amp; Direction", "p1.fn1_p": "Définition des exigences système et de la logique métier, et direction du développement de bout en bout d'un système de suivi opérationnel personnalisé basé sur le réseau à l'aide d'outils no-code assistés par IA — couvrant l'intégralité du cycle de production, de la réception des matières premières à la livraison finale.",
+      "p1.fn2_h": "Déploiement Multilingue", "p1.fn2_p": "Supervision de la création d'une interface entièrement fonctionnelle prenant en charge quatre langues (arabe, anglais, français et allemand), avec préférences linguistiques par utilisateur.",
+      "p1.fn3_h": "Automatisation des Processus", "p1.fn3_p": "Spécification des structures de flux de travail et des autorisations basées sur les rôles, permettant au personnel non technique d'exécuter des cycles de production complets sans aucun codage manuel.",
+      "p1.fn4_h": "Résultat", "p1.fn4_p": "Livraison d'une solution d'orchestration no-code évolutive reliant le contrôle financier à l'exécution opérationnelle, actuellement en phase pilote avant un déploiement opérationnel complet.",
+      "p1.fn5_h": "Déploiement &amp; Maintenance", "p1.fn5_p": "Déploiement du système en configurant un PC de bureau standard comme serveur réseau local (XAMPP), gestion des autorisations d'accès au niveau des appareils sur le réseau de l'entreprise, et maintenance informatique continue (réinstallations du système d'exploitation, configuration réseau) pour maintenir le système opérationnel.",
+      "project2.status": "En utilisation active", "project2.title": "2. Système de Gestion des Présences et du Temps (Développement No-Code / Assisté par IA)",
+      "project2.p": "Direction de la conception et du développement d'un système basé sur le réseau pour le suivi des présences et du temps de travail, en utilisant la même approche assistée par IA, no-code et axée sur les exigences que pour le Système de Suivi de Production. Livré et activement utilisé par l'entreprise pour le suivi quotidien des présences et du temps de travail du personnel.",
+      "experience.eyebrow": "STG.04 — Parcours", "experience.title": "Expérience Professionnelle",
+      "experience.tl1_date": "2024 — Présent", "experience.tl1_h": "Analyste Senior de Données Financières &amp; Opérationnelles / Comptable",
+      "experience.tl1_company": "National Textile Industries (NATEX) — Égypte",
+      "experience.tl1_p": "Direction de la création, du développement et du déploiement d'applications personnalisées de gestion d'entreprise sans code assistées par IA (voir Projets clés ci-dessus) ; consolidation et analyse des données d'usine multi-départementales (Finance, Opérations, RH) pour établir une source unique de vérité pour la prise de décision ; fusion des dossiers financiers (paie et coûts opérationnels) avec les métriques d'effectifs pour calculer les KPI d'efficacité opérationnelle ; et préparation et présentation de rapports analytiques basés sur les données à la direction générale pour guider l'allocation des ressources et la planification stratégique.",
+      "experience.tl2_date": "2022 — 2024", "experience.tl2_h": "Comptable Financier Senior &amp; Spécialiste RH",
+      "experience.tl2_company": "We Care Pharma Distribution &amp; 12A Marketing Agency — Égypte",
+      "experience.tl2_p": "Gestion conjointe de la comptabilité financière et des opérations RH sur deux entités du groupe : We Care (distribution pharmaceutique) et 12A Marketing Agency ; supervision du grand livre, des budgets opérationnels, du suivi des coûts logistiques de distribution et des flux de trésorerie ; et gestion de la paie, des dossiers du personnel, du rapprochement des comptes clients et des règlements fournisseurs.",
+      "experience.tl3_date": "2019 — 2022", "experience.tl3_h": "Consultant Indépendant en Finance &amp; Opérations",
+      "experience.tl3_company": "Conseil Indépendant",
+      "experience.tl3_p": "Fourniture de services d'analyse financière, de contrôle des coûts et de reporting opérationnel pour les petites et moyennes entreprises (PME) ; réalisation d'études de marché et de modélisation de données financières pour soutenir les décisions commerciales pendant les périodes d'instabilité économique ; et montée en compétences en analyse avancée de données, optimisation des processus et outils d'automatisation modernes pour rationaliser le reporting.",
+      "experience.tl4_date": "2012 — 2019", "experience.tl4_h": "Coordinateur Actifs Financiers &amp; Fiscalité",
+      "experience.tl4_company": "Belhasa Real Estate (Groupe Belhasa) — Dubaï, EAU",
+      "experience.tl4_p": "Gestion des systèmes de recouvrement financier et des voies d'escalade juridique pour les chèques impayés dans le portefeuille du groupe ; supervision des actifs immobiliers et des baux de terrains industriels sous la Dubai Real Estate Corporation (DREC) ; et administration des baux commerciaux, des contrats de logement du personnel, et respect de la fiscalité des entreprises et de la TVA.",
+      "experience.tl5_date": "2006 — 2012", "experience.tl5_h": "Spécialiste en Planification de Production &amp; Comptable",
+      "experience.tl5_company": "National Textile Industries (NATEX) — Égypte",
+      "experience.tl5_p": "Gestion de la comptabilité financière tout en supervisant la planification de la production et l'optimisation des flux de travail en usine, et amélioration des normes de contrôle des coûts grâce à des audits rigoureux des matières premières et des frais généraux de fabrication.",
+      "experience.tl6_date": "2003 — 2006", "experience.tl6_h": "Professeur d'Informatique &amp; Mathématiques / Coordinateur Labo Informatique",
+      "experience.tl6_company": "Ministère de l'Éducation, Libye",
+      "experience.tl6_p": "Enseignement des programmes d'informatique et de mathématiques, renforçant le raisonnement analytique, logique et la résolution de problèmes des élèves ; gestion des équipements du laboratoire informatique, supervision des travaux pratiques logiciels et maintenance de routine.",
+      "experience.tl7_date": "2001 — 2003", "experience.tl7_h": "Comptable – Spécialiste Paie &amp; Rémunération",
+      "experience.tl7_company": "GAT Industrial Garments — Égypte",
+      "experience.tl7_p": "Direction de la restructuration numérique des grilles de salaires, des structures de rémunération et des rapprochements de comptes employés.",
+      "experience.tl8_date": "1998 — 2001", "experience.tl8_h": "Comptable &amp; Spécialiste Achats",
+      "experience.tl8_company": "El Sayad for Tricot &amp; Garments — Égypte",
+      "experience.tl8_p": "Gestion des journaux d'achats, des comptes fournisseurs et de l'analyse des coûts d'approvisionnement pour optimiser le stock de matières premières.",
+      "edu.title": "Formation", "edu.text": "Licence en commerce (comptabilité) — Faculté de commerce, Égypte (1998)",
+      "skills.title": "Langues &amp; Compétences Techniques",
+      "skills.tag1": "Arabe (langue maternelle)", "skills.tag2": "Anglais (compétence professionnelle)", "skills.tag3": "Excel &amp; Power BI avancés",
+      "skills.tag4": "Systèmes de vidéosurveillance CCTV", "skills.tag5": "Administration réseau &amp; Windows", "skills.tag6": "Ingénierie de prompts IA",
+      "contact.eyebrow": "STG.05 — Contact", "contact.title": "Envie de me contacter ?",
+      "contact.phone_label": "Téléphone", "contact.linkedin_label": "LinkedIn",
+      "contact.email_label": "E-mail", "contact.location_label": "Localisation", "contact.location_value": "Égypte (Ouvert à la relocalisation internationale)",
+      "footer.copyright": '© <span id="year"></span> Hesham Hussein Ali Metwally — Tous droits réservés.',
+      pageTitle: "Hesham Hussein Ali Metwally | Analyste de données financières et opérationnelles | Conçoit des systèmes IA et No-Code qui pilotent les opérations",
+      pageDesc: "Hesham Hussein Ali Metwally — Analyste de données financières et opérationnelles avec plus de 25 ans d'expérience en Égypte, en Libye et aux Émirats arabes unis, dirigeant des systèmes d'entreprise no-code assistés par IA."
+    },
+    de: {
+      brand: "Hesham Hussein Ali Metwally",
+      "nav.profile": "Profil", "nav.expertise": "Fachbereiche", "nav.software": "Schlüsselprojekte",
+      "nav.experience": "Berufsweg", "nav.contact": "Kontakt",
+      "rail.profile": "Profil", "rail.expertise": "Fachbereiche", "rail.software": "Projekte",
+      "rail.experience": "Berufsweg", "rail.contact": "Kontakt",
+      "hero.tag": "25+ Jahre internationale Erfahrung — Ägypten, Libyen, VAE",
+      "hero.name": "Hesham Hussein Ali Metwally",
+      "hero.role": "Finanz- und Betriebsdatenanalyst | Entwickelt KI- und No-Code-Systeme, die den Betrieb steuern",
+      "hero.lead": "Finanzexperte und Betriebsdatenanalyst mit über 25 Jahren internationaler Erfahrung in Ägypten, Libyen und den Vereinigten Arabischen Emiraten. Spezialisiert auf fortgeschrittene Excel-Datenmodellierung und betriebliche Analysen unter Verwendung von Power BI zur Erstellung von Management-Dashboards.",
+      "hero.cta1": "Berufsweg", "hero.cta2": "Kontakt aufnehmen",
+      "profile.eyebrow": "STG.01 — Profil", "profile.title": "Berufsprofil", "profile.initial": "H",
+      "profile.bio": "Finanzexperte und Betriebsdatenanalyst mit über 25 Jahren internationaler Erfahrung in Ägypten, Libyen und den Vereinigten Arabischen Emiraten. Spezialisiert auf fortgeschrittene Excel-Datenmodellierung und betriebliche Analysen unter Verwendung von Power BI zur Erstellung von Management-Dashboards für datengestützte Entscheidungen. Verbindet fundierte Finanz- und Buchhaltungsexpertise mit praktischer Erfahrung im Aufbau, der Entwicklung und der Leitung KI-gestützter No-Code-Automatisierungsprojekte sowie IT-Infrastrukturunterstützung.",
+      "profile.kv_location_label": "Standort", "profile.kv_location_value": "Ägypten (Bereit für internationalen Umzug)",
+      "profile.kv_email_label": "E-Mail", "profile.kv_phone_label": "Telefon", "profile.kv_linkedin_label": "LinkedIn",
+      "profile.stat1_lbl": "Jahre internationale Erfahrung", "profile.stat2_lbl": "Länder: Ägypten, Libyen, VAE",
+      "profile.stat3_lbl": "KI-gestützte No-Code-Systeme umgesetzt", "profile.stat4_lbl": "Sprachen in den bereitgestellten Systemen",
+      "expertise.eyebrow": "STG.02 — Fachbereiche", "expertise.title": "Kernkompetenzen &amp; Fähigkeiten",
+      "expertise.card1_h": "Datenanalyse &amp; Visualisierung", "expertise.card1_p": "Erweitertes Microsoft Excel (Datenmodellierung, Pivot-Tabellen, komplexe Formeln), Power BI (Dashboards &amp; Management-Berichte), datengestützte Entscheidungsfindung.",
+      "expertise.card2_h": "Finanz- &amp; Betriebsanalytik", "expertise.card2_p": "Finanzbuchhaltung, KPIs, erweiterte Kostenanalyse, abteilungsübergreifende Datenintegration, Budgetierung &amp; Prognose.",
+      "expertise.card3_h": "KI &amp; Workflow-Automatisierung", "expertise.card3_p": "KI-Prompt-Engineering, Management und Leitung der KI-gestützten Systementwicklung, praktischer Aufbau und Entwicklung von No-Code-Anwendungen, Prozessoptimierung.",
+      "expertise.card4_h": "Vermögensverwaltung &amp; Compliance", "expertise.card4_p": "Unternehmenssteuer-Compliance, Miet- &amp; Vertragsverwaltung, Forderungseinzug von ungedeckten Schecks &amp; rechtliche Eskalation.",
+      "expertise.card5_h": "IT-Infrastruktur-Support", "expertise.card5_p": "Netzwerkkonnektivität (Switches, IP-Konfiguration), Windows-Systemadministration, Hardware-Wartung, CCTV-Systemüberwachung.",
+      "software.eyebrow": "STG.03 — Schlüsselprojekte", "software.title": "KI-gestützte Geschäftssysteme",
+      "software.intro": "Entwirft Geschäftssysteme durch Definition von Anforderungen, Arbeitsabläufen und Geschäftslogik und leitet anschließend KI-gestützte No-Code-Entwicklungstools. Überprüft Ergebnisse, identifiziert Lücken, fordert Verbesserungen an und testet jede Lösung anhand der tatsächlichen täglichen Arbeitsabläufe vor der Einführung.",
+      "project1.status": "Derzeit in der Pilotphase", "project1.title": "1. Produktionsverfolgungssystem (No-Code / KI-gestützte Entwicklung)",
+      "p1.fn1_h": "Anforderungen &amp; Leitung", "p1.fn1_p": "Definition der Systemanforderungen und Geschäftslogik sowie Leitung der End-to-End-Entwicklung eines maßgeschneiderten, netzwerkbasierten betrieblichen Verfolgungssystems mittels KI-gestützter No-Code-Tools — von der Rohstoffannahme bis zur Endlieferung.",
+      "p1.fn2_h": "Mehrsprachige Bereitstellung", "p1.fn2_p": "Leitung des Aufbaus einer voll funktionsfähigen Benutzeroberfläche zur Unterstützung von vier Sprachen (Arabisch, Englisch, Französisch und Deutsch) mit benutzerdefinierten Spracheinstellungen.",
+      "p1.fn3_h": "Prozessautomatisierung", "p1.fn3_p": "Festlegung von Workflow-Strukturen und rollenbasierten Berechtigungen, die es nicht-technischem Personal ermöglichen, vollständige Produktionszyklen ohne manuellen Code auszuführen.",
+      "p1.fn4_h": "Ergebnis", "p1.fn4_p": "Bereitstellung einer skalierbaren No-Code-Orchestrierungslösung, die Finanzkontrolle und betriebliche Ausführung verbindet und sich derzeit in der Pilotphase vor der vollständigen betrieblichen Einführung befindet.",
+      "p1.fn5_h": "Bereitstellung &amp; Wartung", "p1.fn5_p": "Bereitstellung des Systems durch Konfiguration eines Standard-Bürocomputers als lokalen Netzwerkserver (XAMPP), Verwaltung geräteseitiger Zugriffsberechtigungen im Firmennetzwerk, und bietet weiterhin laufende IT-Wartung (Neuinstallation des Betriebssystems, Netzwerkkonfiguration), um den Systembetrieb aufrechtzuerhalten.",
+      "project2.status": "Im aktiven Einsatz", "project2.title": "2. Anwesenheits- und Zeitmanagementsystem (No-Code / KI-gestützte Entwicklung)",
+      "project2.p": "Leitung der Konzeption und Entwicklung eines netzwerkbasierten Systems zur Erfassung von Anwesenheit und Arbeitszeit der Belegschaft, unter Verwendung desselben KI-gestützten No-Code-Ansatzes und der anforderungsgesteuerten Methodik wie beim Produktionsverfolgungssystem. Bereitgestellt und wird vom Unternehmen aktiv für die tägliche Erfassung von Anwesenheit und Arbeitszeit genutzt.",
+      "experience.eyebrow": "STG.04 — Berufsweg", "experience.title": "Berufserfahrung",
+      "experience.tl1_date": "2024 — Heute", "experience.tl1_h": "Senior Finanz- &amp; Betriebsdatenanalyst / Buchhalter",
+      "experience.tl1_company": "National Textile Industries (NATEX) — Ägypten",
+      "experience.tl1_p": "Leitung des Aufbaus, der Entwicklung und der Bereitstellung maßgeschneiderter, KI-gestützter No-Code-Geschäftssysteme (siehe Schlüsselprojekte oben); Konsolidierung und Analyse abteilungsübergreifender Werksdaten (Finanzen, Betrieb, HR) zur Schaffung einer einheitlichen Datenbasis für Führungsentscheidungen; Zusammenführung von Finanzdaten (Lohn- und Betriebskosten) mit Personalmetriken zur Berechnung von betrieblichen Effizienz-KPIs; und Erstellung und Präsentation datengestützter Analyseberichte für das Senior Management zur Steuerung von Ressourcenzuweisung und strategischer Planung.",
+      "experience.tl2_date": "2022 — 2024", "experience.tl2_h": "Senior Finanzbuchhalter &amp; HR-Spezialist",
+      "experience.tl2_company": "We Care Pharma Distribution &amp; 12A Marketing Agency — Ägypten",
+      "experience.tl2_p": "Verantwortlich für Finanzbuchhaltung und HR-Aktivitäten zweier Unternehmensbereiche: We Care (Pharmavertrieb) und 12A Marketing Agency; Überwachung von Hauptbuchstrukturen, Betriebsbudgets, Verfolgungslogistikkosten und Cashflows; und Lohn- und Gehaltsabrechnung, Personalaktenführung, Abstimmung von Kundenkonten und Lieferantenzahlungen.",
+      "experience.tl3_date": "2019 — 2022", "experience.tl3_h": "Freiberuflicher Finanz- &amp; Betriebsberater",
+      "experience.tl3_company": "Unabhängige Beratung",
+      "experience.tl3_p": "Bereitstellung freiberuflicher Dienstleistungen für Finanzanalyse, Kostenkontrolle und betriebliches Berichtswesen für kleine und mittlere Unternehmen (KMU); Durchführung von Marktforschung und Finanzdatenmodellierung zur Unterstützung von Geschäftsentscheidungen in wirtschaftlich unruhigen Zeiten; und Weiterbildung in fortgeschrittener Datenanalytik, Prozessoptimierung und modernen Automatisierungstools zur Optimierung von Berichts-Workflows.",
+      "experience.tl4_date": "2012 — 2019", "experience.tl4_h": "Finanzanlagen- &amp; Steuerkoordinator",
+      "experience.tl4_company": "Belhasa Real Estate (Belhasa Group) — Dubai, VAE",
+      "experience.tl4_p": "Verwaltung von Inkassostrukturen und rechtlichen Eskalationswegen für ungedeckte Schecks im gesamten Gruppenportfolio; Überwachung von Immobilienanlagen und Industriegrundstückspachtverträgen unter der Dubai Real Estate Corporation (DREC); und Verwaltung von Gewerbemietverträgen, Arbeitsunterkunftsverträgen, Körperschaftssteuer- und Mehrwertsteuer-Compliance-Prozessen.",
+      "experience.tl5_date": "2006 — 2012", "experience.tl5_h": "Spezialist für Produktionsplanung &amp; Buchhalter",
+      "experience.tl5_company": "National Textile Industries (NATEX) — Ägypten",
+      "experience.tl5_p": "Führung der Finanzbuchhaltung bei gleichzeitiger Überwachung der Produktionsplanung und Optimierung der Arbeitsabläufe im Werk, und Verbesserung der Kostenkontrollstandards durch strenge Audits von Rohstoffen und Fertigungsgemeinkosten.",
+      "experience.tl6_date": "2003 — 2006", "experience.tl6_h": "Lehrer für Informatik &amp; Mathematik / IT-Laborkoordinator",
+      "experience.tl6_company": "Bildungsministerium, Libyen",
+      "experience.tl6_p": "Unterrichten von Informatik- und Mathematiklehrplänen zur Stärkung der analytischen, logischen und quantitativen Fähigkeiten der Schüler; Verwaltung der Computerausstattung, Beaufsichtigung von Softwarepraktika und Durchführung routinemäßiger Systemfehlerbehebungen.",
+      "experience.tl7_date": "2001 — 2003", "experience.tl7_h": "Buchhalter – Spezialist für Lohn &amp; Gehalt",
+      "experience.tl7_company": "GAT Industrial Garments — Ägypten",
+      "experience.tl7_p": "Leitung der digitalen Umstrukturierung von Gehaltsmatrizen, Vergütungsstrukturen und Mitarbeiterkontoabstimmungen.",
+      "experience.tl8_date": "1998 — 2001", "experience.tl8_h": "Buchhalter &amp; Beschaffungsspezialist",
+      "experience.tl8_company": "El Sayad for Tricot &amp; Garments — Ägypten",
+      "experience.tl8_p": "Verwaltung von Einkaufsbüchern, Lieferantenkonten und Beschaffungskostenanalysen zur Optimierung des Rohstoffbestands.",
+      "edu.title": "Ausbildung", "edu.text": "Bachelor of Commerce (B.Com) – Hauptfach Buchhaltung | Wirtschaftswissenschaftliche Fakultät, Ägypten (1998)",
+      "skills.title": "Sprachen &amp; Technische Kenntnisse",
+      "skills.tag1": "Arabisch (Muttersprache)", "skills.tag2": "Englisch (gute berufliche Kenntnisse)", "skills.tag3": "Excel &amp; Power BI (fortgeschritten)",
+      "skills.tag4": "CCTV-Überwachungssysteme", "skills.tag5": "Netzwerk- &amp; Windows-Verwaltung", "skills.tag6": "KI-Prompt-Engineering",
+      "contact.eyebrow": "STG.05 — Kontakt", "contact.title": "Möchten Sie mit mir in Kontakt treten?",
+      "contact.phone_label": "Telefon", "contact.linkedin_label": "LinkedIn",
+      "contact.email_label": "E-Mail", "contact.location_label": "Standort", "contact.location_value": "Ägypten (Bereit für internationalen Umzug)",
+      "footer.copyright": '© <span id="year"></span> Hesham Hussein Ali Metwally — Alle Rechte vorbehalten.',
+      pageTitle: "Hesham Hussein Ali Metwally | Finanz- und Betriebsdatenanalyst | Entwickelt KI- und No-Code-Systeme, die den Betrieb steuern",
+      pageDesc: "Hesham Hussein Ali Metwally — Finanz- und Betriebsdatenanalyst mit über 25 Jahren Erfahrung in Ägypten, Libyen und den VAE, Leiter KI-gestützter No-Code-Geschäftssysteme."
+    },
+    it: {
+      brand: "Hesham Hussein Ali Metwally",
+      "nav.profile": "Profilo", "nav.expertise": "Competenze", "nav.software": "Progetti Chiave",
+      "nav.experience": "Percorso", "nav.contact": "Contatti",
+      "rail.profile": "Profilo", "rail.expertise": "Competenze", "rail.software": "Progetti",
+      "rail.experience": "Percorso", "rail.contact": "Contatti",
+      "hero.tag": "Oltre 25 anni di esperienza internazionale — Egitto, Libia, EAU",
+      "hero.name": "Hesham Hussein Ali Metwally",
+      "hero.role": "Analista di Dati Finanziari e Operativi | Sviluppa Sistemi IA e No-Code per la Gestione Operativa",
+      "hero.lead": "Esperto finanziario e analista operativo dei dati con oltre 25 anni di esperienza internazionale maturata in Egitto, Libia ed Emirati Arabi Uniti. Specializzato nella modellazione avanzata dei dati con Excel, con utilizzo di Power BI per la realizzazione di dashboard direzionali a supporto delle decisioni basate sui dati.",
+      "hero.cta1": "Percorso Professionale", "hero.cta2": "Contattami",
+      "profile.eyebrow": "STG.01 — Profilo", "profile.title": "Profilo Professionale", "profile.initial": "H",
+      "profile.bio": "Esperto finanziario e analista operativo dei dati con oltre 25 anni di esperienza internazionale maturata in Egitto, Libia ed Emirati Arabi Uniti. Specializzato nella modellazione avanzata dei dati con Excel e nell'analisi operativa, con utilizzo di Power BI per la realizzazione di dashboard direzionali a supporto delle decisioni basate sui dati. Unisce solide competenze finanziarie e contabili a un'esperienza pratica nella progettazione, sviluppo e direzione di progetti di automazione no-code assistiti dall'intelligenza artificiale, oltre al supporto dell'infrastruttura IT.",
+      "profile.kv_location_label": "Sede", "profile.kv_location_value": "Egitto (Disponibile a trasferimento internazionale)",
+      "profile.kv_email_label": "Email", "profile.kv_phone_label": "Telefono", "profile.kv_linkedin_label": "LinkedIn",
+      "profile.stat1_lbl": "anni di esperienza internazionale", "profile.stat2_lbl": "paesi: Egitto, Libia, EAU",
+      "profile.stat3_lbl": "sistemi no-code assistiti dall'IA realizzati", "profile.stat4_lbl": "lingue supportate nei sistemi implementati",
+      "expertise.eyebrow": "STG.02 — Competenze", "expertise.title": "Competenze Chiave",
+      "expertise.card1_h": "Analisi e Visualizzazione dei Dati", "expertise.card1_p": "Microsoft Excel avanzato (modellazione dati, tabelle pivot, formule complesse), Power BI (dashboard e reportistica direzionale), processo decisionale basato sui dati.",
+      "expertise.card2_h": "Analisi Finanziaria e Operativa", "expertise.card2_p": "Contabilità finanziaria, KPI, analisi avanzata dei costi, integrazione dei dati trasversali, budgeting e previsioni.",
+      "expertise.card3_h": "IA e Automazione dei Flussi di Lavoro", "expertise.card3_p": "Prompt engineering per l'IA, gestione e direzione dello sviluppo di sistemi assistiti dall'IA, sviluppo pratico di applicazioni no-code, ottimizzazione dei processi.",
+      "expertise.card4_h": "Gestione Patrimoniale e Conformità", "expertise.card4_p": "Conformità fiscale aziendale, amministrazione di locazioni e contratti, recupero assegni insoluti ed escalation legale.",
+      "expertise.card5_h": "Supporto Infrastruttura IT", "expertise.card5_p": "Connettività di rete (switch, configurazione IP), amministrazione di sistemi Windows, manutenzione hardware, monitoraggio sistemi CCTV.",
+      "software.eyebrow": "STG.03 — Progetti Chiave", "software.title": "Sistemi Aziendali Assistiti dall'IA",
+      "software.intro": "Progetta sistemi aziendali definendo requisiti, flussi di lavoro e logica di business, per poi dirigere strumenti di sviluppo no-code assistiti dall'IA. Analizza i risultati, individua le criticità, richiede modifiche e testa ogni soluzione sui flussi di lavoro quotidiani reali prima dell'implementazione.",
+      "project1.status": "Attualmente in fase pilota", "project1.title": "1. Sistema di Tracciamento della Produzione (Sviluppo No-Code / Assistito dall'IA)",
+      "p1.fn1_h": "Requisiti e Direzione", "p1.fn1_p": "Ha definito i requisiti di sistema e la logica di business e diretto lo sviluppo end-to-end di un sistema di tracciamento operativo basato su rete, personalizzato e assistito dall'IA con strumenti no-code, che copre l'intero ciclo produttivo dal ricevimento delle materie prime alla consegna finale.",
+      "p1.fn2_h": "Implementazione Multilingue", "p1.fn2_p": "Ha diretto la realizzazione di un'interfaccia pienamente funzionale in quattro lingue (arabo, inglese, francese e tedesco), con preferenze linguistiche personalizzabili per utente.",
+      "p1.fn3_h": "Automazione dei Processi", "p1.fn3_p": "Ha definito strutture di flusso di lavoro personalizzate e permessi basati sui ruoli, permettendo al personale non tecnico di gestire l'intero ciclo produttivo senza alcuna codifica manuale.",
+      "p1.fn4_h": "Risultato", "p1.fn4_p": "Ha realizzato una soluzione di orchestrazione scalabile e a codice zero che unisce controllo finanziario ed esecuzione operativa, attualmente in fase di sperimentazione pilota in vista dell'implementazione operativa completa.",
+      "p1.fn5_h": "Implementazione e Manutenzione", "p1.fn5_p": "Ha configurato un normale PC da ufficio come server di rete locale (XAMPP), gestito i permessi di accesso a livello di dispositivo sull'intera rete aziendale e continua a fornire manutenzione IT (reinstallazione del sistema operativo, configurazione di rete) per mantenere operativo il sistema.",
+      "project2.status": "In uso attivo", "project2.title": "2. Sistema di Gestione Presenze e Orari (Sviluppo No-Code / Assistito dall'IA)",
+      "project2.p": "Ha diretto la progettazione e lo sviluppo di un sistema basato su rete per la gestione delle presenze e degli orari del personale, utilizzando lo stesso approccio no-code assistito dall'IA e la stessa metodologia orientata ai requisiti del Sistema di Tracciamento della Produzione. Consegnato e attualmente utilizzato dall'azienda per la gestione quotidiana delle presenze e degli orari del personale.",
+      "experience.eyebrow": "STG.04 — Percorso", "experience.title": "Esperienza Professionale",
+      "experience.tl1_date": "2024 — Presente", "experience.tl1_h": "Analista Senior dei Dati Finanziari e Operativi / Contabile",
+      "experience.tl1_company": "National Textile Industries (NATEX) — Egitto",
+      "experience.tl1_p": "Ha diretto la progettazione, lo sviluppo e l'implementazione di sistemi aziendali personalizzati no-code assistiti dall'IA (vedi Progetti Chiave sopra); ha consolidato e analizzato i dati multidipartimentali dello stabilimento (Finanza, Operazioni, Risorse Umane) per creare un'unica fonte di verità a supporto delle decisioni direzionali; ha unito i dati finanziari (buste paga e costi operativi) con le metriche del personale per calcolare i KPI di efficienza operativa; e ha preparato e presentato report analitici basati sui dati alla dirigenza senior per orientare l'allocazione delle risorse e la pianificazione strategica.",
+      "experience.tl2_date": "2022 — 2024", "experience.tl2_h": "Contabile Finanziario Senior e Specialista Risorse Umane",
+      "experience.tl2_company": "We Care Pharma Distribution &amp; 12A Marketing Agency — Egitto",
+      "experience.tl2_p": "Ha gestito la contabilità finanziaria e le operazioni delle Risorse Umane di due società del gruppo: We Care (distribuzione farmaceutica) e 12A Marketing Agency; ha supervisionato le strutture del libro mastro, i budget operativi, il tracciamento dei costi logistici di distribuzione e i flussi di cassa; e ha amministrato l'elaborazione delle buste paga, i fascicoli del personale, le riconciliazioni dei conti clienti e i pagamenti ai fornitori.",
+      "experience.tl3_date": "2019 — 2022", "experience.tl3_h": "Consulente Finanziario e Operativo Indipendente",
+      "experience.tl3_company": "Consulenza Indipendente",
+      "experience.tl3_p": "Ha fornito servizi di consulenza indipendente in analisi finanziaria, controllo dei costi e reportistica operativa per piccole e medie imprese (PMI); ha condotto ricerche di mercato e modellazione di dati finanziari a supporto delle decisioni aziendali durante periodi di instabilità economica; e ha approfondito le competenze in analisi avanzata dei dati, ottimizzazione dei processi e strumenti di automazione moderni per snellire i flussi di reportistica.",
+      "experience.tl4_date": "2012 — 2019", "experience.tl4_h": "Coordinatore Finanziario, Patrimoniale e Fiscale",
+      "experience.tl4_company": "Belhasa Real Estate (Belhasa Group) — Dubai, EAU",
+      "experience.tl4_p": "Ha gestito i sistemi di recupero crediti e i percorsi di escalation legale per assegni insoluti nell'intero portafoglio del gruppo; ha supervisionato gli asset immobiliari e i terreni industriali in locazione sotto la Dubai Real Estate Corporation (DREC); e ha amministrato locazioni commerciali, contratti di alloggio per la manodopera, conformità fiscale aziendale e adempimenti IVA.",
+      "experience.tl5_date": "2006 — 2012", "experience.tl5_h": "Specialista di Pianificazione della Produzione e Contabile",
+      "experience.tl5_company": "National Textile Industries (NATEX) — Egitto",
+      "experience.tl5_p": "Ha gestito la contabilità finanziaria supervisionando al contempo la pianificazione della produzione e l'ottimizzazione dei flussi di lavoro in fabbrica, e ha migliorato gli standard di controllo dei costi attraverso audit rigorosi delle materie prime e dei costi generali di produzione.",
+      "experience.tl6_date": "2003 — 2006", "experience.tl6_h": "Insegnante di Informatica e Matematica / Coordinatore Laboratorio IT",
+      "experience.tl6_company": "Ministero dell'Istruzione, Libia",
+      "experience.tl6_p": "Ha insegnato programmi di informatica e matematica, rafforzando le capacità analitiche, di ragionamento logico e di problem solving quantitativo degli studenti; ha gestito le attrezzature del laboratorio informatico, supervisionato la formazione pratica sui software e svolto la manutenzione e risoluzione dei problemi di sistema di routine.",
+      "experience.tl7_date": "2001 — 2003", "experience.tl7_h": "Contabile – Specialista Buste Paga e Compensi",
+      "experience.tl7_company": "GAT Industrial Garments — Egitto",
+      "experience.tl7_p": "Ha guidato la digitalizzazione delle matrici delle buste paga, delle strutture retributive e delle riconciliazioni dei conti dei dipendenti.",
+      "experience.tl8_date": "1998 — 2001", "experience.tl8_h": "Contabile e Specialista Acquisti",
+      "experience.tl8_company": "El Sayad for Tricot &amp; Garments — Egitto",
+      "experience.tl8_p": "Ha gestito i registri di acquisto, i conti fornitori e l'analisi dei costi di approvvigionamento per ottimizzare l'inventario delle materie prime.",
+      "edu.title": "Istruzione", "edu.text": "Laurea in Economia e Commercio (B.Com) – Indirizzo Contabilità | Facoltà di Economia e Commercio, Egitto (1998)",
+      "skills.title": "Lingue e Competenze Tecniche",
+      "skills.tag1": "Arabo (madrelingua)", "skills.tag2": "Inglese (competenza professionale operativa)", "skills.tag3": "Excel e Power BI avanzati",
+      "skills.tag4": "Sistemi di videosorveglianza CCTV", "skills.tag5": "Amministrazione rete e Windows", "skills.tag6": "Prompt engineering per l'IA",
+      "contact.eyebrow": "STG.05 — Contatti", "contact.title": "Vuoi metterti in contatto?",
+      "contact.phone_label": "Telefono", "contact.linkedin_label": "LinkedIn",
+      "contact.email_label": "Email", "contact.location_label": "Sede", "contact.location_value": "Egitto (Disponibile a trasferimento internazionale)",
+      "footer.copyright": '© <span id="year"></span> Hesham Hussein Ali Metwally — Tutti i diritti riservati.',
+      pageTitle: "Hesham Hussein Ali Metwally | Analista di Dati Finanziari e Operativi | Sviluppa Sistemi IA e No-Code per la Gestione Operativa",
+      pageDesc: "Hesham Hussein Ali Metwally — Analista di dati finanziari e operativi con oltre 25 anni di esperienza in Egitto, Libia ed Emirati Arabi Uniti, alla guida di sistemi aziendali no-code assistiti dall'IA."
+    }
+  };
+
+  const RTL_LANGS = ['ar'];
+  const SUPPORTED = ['ar','en','fr','de','it'];
+
+  function applyLang(lang){
+    if(!SUPPORTED.includes(lang)) lang = 'en';
+    const dict = TRANSLATIONS[lang];
+    const html = document.getElementById('htmlRoot');
+    html.setAttribute('lang', lang);
+    html.setAttribute('dir', RTL_LANGS.includes(lang) ? 'rtl' : 'ltr');
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined){
+        el.innerHTML = dict[key];
+      }
+    });
+
+    document.getElementById('pageTitle').textContent = dict.pageTitle;
+    document.getElementById('pageDesc').setAttribute('content', dict.pageDesc);
+    document.title = dict.pageTitle;
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    try{ localStorage.setItem('hesham_lang', lang); }catch(e){}
+    updateRail();
+  }
+
+  function detectInitialLang(){
+    try{
+      const saved = localStorage.getItem('hesham_lang');
+      if(saved && SUPPORTED.includes(saved)) return saved;
+    }catch(e){}
+    const browserLangs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+    for(const bl of browserLangs){
+      const short = bl.toLowerCase().slice(0,2);
+      if(SUPPORTED.includes(short)) return short;
+    }
+    return 'en';
+  }
+
+  // ============ Reveal + Rail scroll (declared before first applyLang call) ============
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => io.observe(el));
+
+  const sections = ['profile','expertise','software','experience','contact'].map(id => document.getElementById(id));
+  const fill = document.getElementById('railFill');
+  const stages = document.querySelectorAll('.rail-stage');
+
+  function updateRail(){
+    const scrollTop = window.scrollY;
+    const first = sections[0].offsetTop - 200;
+    const last = sections[sections.length-1].offsetTop - 200;
+    let pct = ((scrollTop - first) / (last - first)) * 100;
+    pct = Math.max(0, Math.min(100, pct));
+    if (fill) fill.style.height = pct + '%';
+
+    sections.forEach((sec, i) => {
+      const trigger = sec.offsetTop - window.innerHeight/2;
+      if (scrollTop >= trigger) stages[i].classList.add('done');
+      else stages[i].classList.remove('done');
+    });
+  }
+  window.addEventListener('scroll', updateRail, { passive:true });
+
+  document.getElementById('langSwitch').addEventListener('click', (e) => {
+    const btn = e.target.closest('.lang-btn');
+    if(!btn) return;
+    applyLang(btn.getAttribute('data-lang'));
+  });
+
+  applyLang(detectInitialLang());
+</script>
+
+</body>
+</html>
