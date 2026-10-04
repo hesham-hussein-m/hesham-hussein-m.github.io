@@ -34,6 +34,10 @@ Financial expert and operational data analyst with over 25 years of internationa
 - **Independent Consulting:** Freelance Financial & Operations Consultant (2019 – 2022)
 - **Belhasa Real Estate:** Financial Asset & Tax Coordinator (2012 – 2019)
 
+## Education
+
+- **Bachelor of Commerce (B.Com), Major in Accounting:** Faculty of Commerce, Egypt (1998)
+
 ## Languages
 
 Arabic (native) · English (professional working proficiency)
